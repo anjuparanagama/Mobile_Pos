@@ -1,60 +1,102 @@
 import React from 'react';
 import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
-import { useNavigation, NavigationProp } from '@react-navigation/native';
+
+import {
+  useNavigation,
+  NavigationProp,
+  useRoute,
+} from '@react-navigation/native';
+
 import Feather from 'react-native-vector-icons/Feather';
+
 import type { SidemenuParams } from '../../interface/sidemenu';
+
+const PRIMARY = '#7B468C';
 
 export default function MobileBottomNavbar() {
   const navigation = useNavigation<NavigationProp<SidemenuParams>>();
 
+  const route = useRoute();
+
+  const isActive = (name: string) => route.name === name;
+
   return (
     <View style={styles.container}>
-      {/* Home */}
+      {/* Dashboard */}
       <TouchableOpacity
         style={styles.item}
         onPress={() => navigation.navigate('Home')}
       >
-        <Feather name="home" size={22} color="#9CA3AF" />
-        <Text style={styles.label}>Home</Text>
+        <Feather
+          name="grid"
+          size={22}
+          color={isActive('Home') ? PRIMARY : '#9CA3AF'}
+        />
+        <Text style={[styles.label, isActive('Home') && styles.activeLabel]}>
+          Dashboard
+        </Text>
       </TouchableOpacity>
 
-      {/* Saved */}
+      {/* Orders */}
       <TouchableOpacity
         style={styles.item}
-        onPress={() => navigation.navigate('Saved')}
+        onPress={() => navigation.navigate('Inventory')}
       >
-        <Feather name="bookmark" size={22} color="#9CA3AF" />
-        <Text style={styles.label}>Saved</Text>
+        <Feather
+          name="database"
+          size={22}
+          color={isActive('Orders') ? PRIMARY : '#9CA3AF'}
+        />
+        <Text style={[styles.label, isActive('Orders') && styles.activeLabel]}>
+          Inventory
+        </Text>
       </TouchableOpacity>
 
-      {/* Floating Plus Button */}
-      <View style={styles.plusWrapper}>
-        <TouchableOpacity
-          style={styles.plusButton}
-          onPress={() => navigation.navigate('PostAd')}
+      {/* New Sale - inline, same row, no overlay */}
+      <TouchableOpacity
+        style={styles.item}
+        /* onPress={() => navigation.navigate('NewSale')} */
+      >
+        <View style={styles.saleCircle}>
+          <Feather name="plus" size={20} color="#fff" />
+        </View>
+        <Text style={[styles.label, isActive('NewSale') && styles.activeLabel]}>
+          POS
+        </Text>
+      </TouchableOpacity>
+
+      {/* Products */}
+      <TouchableOpacity
+        style={styles.item}
+        /* onPress={() => navigation.navigate('Products')} */
+      >
+        <Feather
+          name="file-text"
+          size={22}
+          color={isActive('Products') ? PRIMARY : '#9CA3AF'}
+        />
+        <Text
+          style={[styles.label, isActive('Products') && styles.activeLabel]}
         >
-          <Feather name="plus" size={28} color="#fff" />
-        </TouchableOpacity>
-        <Text style={styles.label}>Post Ad</Text>
-      </View>
-      <View style={{ width: 30 }} />
-
-      {/* Settings */}
-      <TouchableOpacity
-        style={styles.item}
-        onPress={() => navigation.navigate('Settings')}
-      >
-        <Feather name="settings" size={22} color="#9CA3AF" />
-        <Text style={styles.label}>Settings</Text>
+          Sales
+        </Text>
       </TouchableOpacity>
 
-      {/* Account */}
+      {/* Customers */}
       <TouchableOpacity
         style={styles.item}
-        onPress={() => navigation.navigate('Account')}
+        /* onPress={() => navigation.navigate('Customers')} */
       >
-        <Feather name="user" size={22} color="#9CA3AF" />
-        <Text style={styles.label}>Account</Text>
+        <Feather
+          name="more-horizontal"
+          size={22}
+          color={isActive('Customers') ? PRIMARY : '#9CA3AF'}
+        />
+        <Text
+          style={[styles.label, isActive('Customers') && styles.activeLabel]}
+        >
+          More
+        </Text>
       </TouchableOpacity>
     </View>
   );
@@ -65,39 +107,48 @@ const styles = StyleSheet.create({
     position: 'absolute',
     bottom: 0,
     width: '100%',
-    height: 80,
-    backgroundColor: '#fff',
+    height: 70,
+    backgroundColor: '#FFFFFF',
     flexDirection: 'row',
-    justifyContent: 'space-around',
+    justifyContent: 'space-between',
     alignItems: 'center',
+    paddingHorizontal: 8,
     borderTopWidth: 1,
     borderColor: '#E5E7EB',
+    elevation: 10,
+    shadowColor: '#000',
+    shadowOpacity: 0.08,
+    shadowRadius: 8,
   },
+
+  // all 5 items share equal width, same row, centered content
   item: {
+    flex: 1,
+    height: '100%',
     alignItems: 'center',
     justifyContent: 'center',
-    gap: 20,
+    gap: 4,
   },
+
   label: {
     fontSize: 11,
     color: '#9CA3AF',
     marginTop: 2,
+    fontWeight: '500',
   },
-  plusWrapper: {
-    position: 'absolute',
-    left: '50%',
-    transform: [{ translateX: -30 }],
-    bottom: 20,
-    alignItems: 'center',
+
+  activeLabel: {
+    color: PRIMARY,
+    fontWeight: '700',
   },
-  plusButton: {
-    width: 60,
-    height: 60,
-    borderRadius: 30,
-    backgroundColor: '#ffb703',
+
+  // plus icon just gets a colored circle background, still inline
+  saleCircle: {
+    width: 34,
+    height: 34,
+    borderRadius: 17,
+    backgroundColor: PRIMARY,
     justifyContent: 'center',
     alignItems: 'center',
-    borderWidth: 4,
-    borderColor: '#f3f3f3',
   },
 });
