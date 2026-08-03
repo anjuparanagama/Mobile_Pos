@@ -6,6 +6,7 @@ import SplashScreen from './src/component/splashScreen';
 import LoginScreen from './src/screens/auth/LoginScreen';
 import RegisterScreen from './src/screens/auth/RegisterScreen';
 import HomeScreen from './src/screens/Dashboard/Home';
+import InventoryScreen from './src/screens/Inventory/Inventory';
 
 const Stack = createStackNavigator();
 
@@ -29,6 +30,8 @@ const App = () => {
         <Stack.Screen name="Register" component={RegisterScreen} />
         {/* Home Screen */}
         <Stack.Screen name="Home" component={HomeScreen} />
+
+        <Stack.Screen name="Inventory" component={InventoryScreen} />
       </Stack.Navigator>
     </NavigationContainer>
   );

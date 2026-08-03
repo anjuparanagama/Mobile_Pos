@@ -1,97 +1,149 @@
-This is a new [**React Native**](https://reactnative.dev) project, bootstrapped using [`@react-native-community/cli`](https://github.com/react-native-community/cli).
+# BizLk — Mobile Point of Sale
 
-# Getting Started
+![BizLk Screenshot](src/assets/logo.png)
 
-> **Note**: Make sure you have completed the [Set Up Your Environment](https://reactnative.dev/docs/set-up-your-environment) guide before proceeding.
+**BizLk** is a mobile-based **offline-first Point of Sale (POS)** application built with [React Native](https://reactnative.dev). It is designed to help small businesses manage sales, track inventory, and monitor performance — all from a smartphone, with no internet connection required.
 
-## Step 1: Start Metro
+---
 
-First, you will need to run **Metro**, the JavaScript build tool for React Native.
+## Features
 
-To start the Metro dev server, run the following command from the root of your React Native project:
+### Core POS
+- **Dashboard** — At-a-glance sales analytics with daily totals, sales count, low-stock alerts, and recent transactions.
+- **Inventory** — Search products by name or scan barcodes to look up items instantly.
+- **New Sale (POS)** — Quick order entry with product search, quantity adjustment, and multiple payment methods (Cash, Card, QR).
+- **Sales History** — View past transactions and receipts.
+- **More** — Access settings, account info, and additional tools.
 
-```sh
-# Using npm
-npm start
+### Offline First
+- All product catalogs, transaction records, and sales data are stored **locally on the device** using async storage / SQLite.
+- Full functionality is available **without an internet connection** — perfect for markets, food trucks, and pop-up stalls.
 
-# OR using Yarn
-yarn start
+### Authentication
+- **Login** and **Register** flows with email/password validation.
+- Secure password handling with show/hide toggle.
+
+### UI / UX
+- Animated **splash screen** powered by Lottie.
+- Clean, responsive layout with a **bottom navigation bar** for quick switching between sections.
+- SVG-based gradient header and live **date/time** display on the dashboard.
+
+---
+
+## Tech Stack
+
+| Category         | Library                        |
+| ---------------- | ------------------------------ |
+| Framework        | React Native 0.83              |
+| Language         | TypeScript                     |
+| Navigation       | React Navigation 7 (Stack)     |
+| Icons            | Lucide React Native            |
+| Icon Font        | react-native-vector-icons      |
+| Charts           | react-native-chart-kit         |
+| Animations       | lottie-react-native            |
+| SVG              | react-native-svg               |
+
+---
+
+## Project Structure
+
+```
+src/
+├── assets/           # Images and Lottie animation files
+├── component/        # Reusable UI components (Header, MenuBar, SearchBar, Title, SplashScreen)
+├── interface/        # TypeScript type definitions
+└── screens/
+    ├── auth/         # Login & Register screens
+    ├── Dashboard/    # Home screen with analytics charts
+    └── Inventory/    # Product search & barcode scanning
 ```
 
-## Step 2: Build and run your app
+---
 
-With Metro running, open a new terminal window/pane from the root of your React Native project, and use one of the following commands to build and run your Android or iOS app:
+## Getting Started
 
-### Android
+### Prerequisites
+
+- [Node.js](https://nodejs.org/) >= 20
+- [React Native CLI](https://reactnative.dev/docs/environment-setup) environment configured
+- Android Studio (for Android builds) or Xcode (for iOS builds)
+
+### Installation
 
 ```sh
-# Using npm
+# Clone the repository
+git clone <your-repo-url>
+cd BizLk
+
+# Install dependencies
+npm install
+```
+
+### Run the App
+
+#### Android
+
+```sh
 npm run android
-
-# OR using Yarn
-yarn android
 ```
 
-### iOS
-
-For iOS, remember to install CocoaPods dependencies (this only needs to be run on first clone or after updating native deps).
-
-The first time you create a new project, run the Ruby bundler to install CocoaPods itself:
+#### iOS
 
 ```sh
-bundle install
-```
+# Install CocoaPods dependencies (first time only)
+cd ios && pod install && cd ..
 
-Then, and every time you update your native dependencies, run:
-
-```sh
-bundle exec pod install
-```
-
-For more information, please visit [CocoaPods Getting Started guide](https://guides.cocoapods.org/using/getting-started.html).
-
-```sh
-# Using npm
+# Run the iOS app
 npm run ios
-
-# OR using Yarn
-yarn ios
 ```
 
-If everything is set up correctly, you should see your new app running in the Android Emulator, iOS Simulator, or your connected device.
+### Running Tests
 
-This is one way to run your app — you can also build it directly from Android Studio or Xcode.
+```sh
+npm test
+```
 
-## Step 3: Modify your app
+### Linting
 
-Now that you have successfully run the app, let's make changes!
+```sh
+npm run lint
+```
 
-Open `App.tsx` in your text editor of choice and make some changes. When you save, your app will automatically update and reflect these changes — this is powered by [Fast Refresh](https://reactnative.dev/docs/fast-refresh).
+---
 
-When you want to forcefully reload, for example to reset the state of your app, you can perform a full reload:
+## Development
 
-- **Android**: Press the <kbd>R</kbd> key twice or select **"Reload"** from the **Dev Menu**, accessed via <kbd>Ctrl</kbd> + <kbd>M</kbd> (Windows/Linux) or <kbd>Cmd ⌘</kbd> + <kbd>M</kbd> (macOS).
-- **iOS**: Press <kbd>R</kbd> in iOS Simulator.
+1. Start the Metro bundler:
 
-## Congratulations! :tada:
+```sh
+npm start
+```
 
-You've successfully run and modified your React Native App. :partying_face:
+2. Press `a` to run on Android or `i` to run on iOS.
 
-### Now what?
+---
 
-- If you want to add this new React Native code to an existing application, check out the [Integration guide](https://reactnative.dev/docs/integration-with-existing-apps).
-- If you're curious to learn more about React Native, check out the [docs](https://reactnative.dev/docs/getting-started).
+## Configuration
 
-# Troubleshooting
+Edit `app.json` to change the app display name and bundle identifier before building release versions:
 
-If you're having issues getting the above steps to work, see the [Troubleshooting](https://reactnative.dev/docs/troubleshooting) page.
+```json
+{
+  "name": "BizLk",
+  "displayName": "BizLk"
+}
+```
 
-# Learn More
+---
 
-To learn more about React Native, take a look at the following resources:
+## License
 
-- [React Native Website](https://reactnative.dev) - learn more about React Native.
-- [Getting Started](https://reactnative.dev/docs/environment-setup) - an **overview** of React Native and how setup your environment.
-- [Learn the Basics](https://reactnative.dev/docs/getting-started) - a **guided tour** of the React Native **basics**.
-- [Blog](https://reactnative.dev/blog) - read the latest official React Native **Blog** posts.
-- [`@facebook/react-native`](https://github.com/facebook/react-native) - the Open Source; GitHub **repository** for React Native.
+This project is private and intended for internal business use.
+
+---
+
+## Learn More
+
+- [React Native Documentation](https://reactnative.dev/docs/getting-started)
+- [React Navigation](https://reactnavigation.org/docs/getting-started)
+- [react-native-chart-kit](https://github.com/indieswap/react-native-chart-kit)
