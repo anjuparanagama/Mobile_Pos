@@ -200,7 +200,7 @@ const AnalyticsScreen = () => {
         </View> */}
 
         {/* Top Products */}
-
+        {/* 
         <View style={styles.section}>
           <Text style={styles.sectionTitle}>🔥 Top Selling Products</Text>
 
@@ -213,7 +213,7 @@ const AnalyticsScreen = () => {
               <Text style={styles.itemValue}>{item.sold}</Text>
             </View>
           ))}
-        </View>
+        </View> */}
 
         {/* Low Stock */}
 

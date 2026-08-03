@@ -1,4 +1,4 @@
-package com.rathagaya
+package com.BizLk
 
 import android.app.Application
 import com.facebook.react.PackageList

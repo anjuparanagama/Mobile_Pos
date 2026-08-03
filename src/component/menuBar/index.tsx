@@ -40,7 +40,7 @@ export default function MobileBottomNavbar() {
       {/* Orders */}
       <TouchableOpacity
         style={styles.item}
-        /* onPress={() => navigation.navigate('Orders')} */
+        onPress={() => navigation.navigate('Inventory')}
       >
         <Feather
           name="database"
