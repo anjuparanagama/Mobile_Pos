@@ -69,7 +69,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: 12,
     height: 44,
     borderWidth: 1,
-    borderColor: '#E5E7EB',
+    borderColor: '#7B468C',
   },
 
   icon: {
@@ -79,7 +79,7 @@ const styles = StyleSheet.create({
   input: {
     flex: 1,
     fontSize: 14,
-    color: '#333',
+    color: '#111827',
     height: '100%',
   },
 

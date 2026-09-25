@@ -13,16 +13,21 @@ import { Info } from 'lucide-react-native';
 interface TitleProps {
   title: string;
   tooltip?: string;
+  isTooltipVisible?: boolean;
 }
 
-export default function Title({ title, tooltip }: TitleProps) {
+export default function Title({
+  title,
+  tooltip,
+  isTooltipVisible = false,
+}: TitleProps) {
   const [visible, setVisible] = useState(false);
 
   return (
     <View style={styles.container}>
       <Text style={styles.title}>{title}</Text>
 
-      {tooltip && (
+      {tooltip && isTooltipVisible && (
         <>
           <TouchableOpacity
             onPress={() => setVisible(true)}
@@ -59,12 +64,13 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'flex-start',
     gap: 8,
+    marginTop: 10,
   },
 
   title: {
     fontSize: 32,
     fontWeight: '700',
-    color: '#222',
+    color: '#7B468C',
   },
 
   infoBtn: {
