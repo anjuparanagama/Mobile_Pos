@@ -37,11 +37,6 @@ const LoginScreen = ({ navigation }: any) => {
   const isEmailValid = username.includes('@') && username.includes('.');
 
   const handleLogin = () => {
-    if (!username || !password) {
-      Alert.alert('Login Error', 'Please enter username and password');
-      return;
-    }
-
     navigation.navigate('Home');
   };
 
