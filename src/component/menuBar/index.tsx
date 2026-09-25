@@ -65,18 +65,18 @@ export default function MobileBottomNavbar() {
         </Text>
       </TouchableOpacity>
 
-      {/* Products */}
+      {/* Products / Sales */}
       <TouchableOpacity
         style={styles.item}
-        /* onPress={() => navigation.navigate('Products')} */
+        onPress={() => navigation.navigate('Sales')}
       >
         <Feather
           name="file-text"
           size={22}
-          color={isActive('Products') ? PRIMARY : '#9CA3AF'}
+          color={isActive('Sales') ? PRIMARY : '#9CA3AF'}
         />
         <Text
-          style={[styles.label, isActive('Products') && styles.activeLabel]}
+          style={[styles.label, isActive('Sales') && styles.activeLabel]}
         >
           Sales
         </Text>
